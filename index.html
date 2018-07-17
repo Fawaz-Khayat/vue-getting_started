@@ -34,7 +34,7 @@
             <a :href="newItem" target="_blank">Dynamic Link</a>
             -->
             <ul>
-                <li v-for="item in items">{{ item }}</li>
+                <li v-for="item in items">{{ item.label }}</li>
             </ul>
             <p v-if="items.length === 0">Nice job! You bought all the items</p>
 
@@ -49,14 +49,28 @@
                     header: 'Vue is ready to party',
                     newItem: '',
                     items: [
-                        // '10 party hats',
-                        // '2 board games',
-                        // '20 cups'
+                        {
+                            label: '10 party hats',
+                            purchased: false
+                        },
+                        {
+                            label: '2 board games',
+                            purchased: true
+                        },
+                        {
+                            label: '20 cups',
+                            purchased: false
+                        }
                     ]
                 },
                 methods:{
                     saveItem: function() {
-                        this.items.push(this.newItem);
+                        this.items.push(
+                            {
+                                label: this.newItem,
+                                purchased: false
+                            }
+                        );
                         this.newItem = '';
                     },
                     changeState: function(newState) {
