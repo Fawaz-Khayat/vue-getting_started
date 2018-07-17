@@ -19,7 +19,10 @@
         <script src="" async defer></script>
         <div id="shopping-list">
             <h1>{{ header.toLocaleUpperCase() }}</h1>
-            <h1>{{ header ? header : 'welcome' }}</h1>
+            <!-- <h1>{{ header ? header : 'welcome' }}</h1> -->
+            <ul>
+                <li v-for="item in items">{{ item }}</li>
+            </ul>
 
             <input style="width:500px" type="text" v-model="header">
         </div>
@@ -28,7 +31,12 @@
             let shoppingList = new Vue({
                 el:'#shopping-list',
                 data: {
-                    header: 'Vue is ready to party'
+                    header: 'Vue is ready to party',
+                    items: [
+                        '10 party hats',
+                        '2 board games',
+                        '20 cups'
+                    ]
                 }
             });
         </script>
