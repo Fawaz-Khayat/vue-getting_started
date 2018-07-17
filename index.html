@@ -17,7 +17,18 @@
         <![endif]-->
         
         <script src="" async defer></script>
+        <div id="shopping-list">
+            <h1>{{ header }}</h1>
+            <input style="width:500px" type="text" v-model="header">
+        </div>
         <script src="https://vuejs.org/js/vue.js"></script>
-        
+        <script>
+            let shoppingList = new Vue({
+                el:'#shopping-list',
+                data: {
+                    header: 'Vue is ready to party'
+                }
+            });
+        </script>
     </body>
 </html>
