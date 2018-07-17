@@ -26,6 +26,7 @@
             <ul>
                 <li v-for="item in items">{{ item }}</li>
             </ul>
+            <p v-if="items.length === 0">Nice job! You bought all the items</p>
 
             
         </div>
@@ -37,9 +38,9 @@
                     header: 'Vue is ready to party',
                     newItem: '',
                     items: [
-                        '10 party hats',
-                        '2 board games',
-                        '20 cups'
+                        // '10 party hats',
+                        // '2 board games',
+                        // '20 cups'
                     ]
                 },
                 methods:{
