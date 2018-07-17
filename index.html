@@ -18,9 +18,14 @@
         
         <script src="" async defer></script>
         <div id="shopping-list">
-            <h1>{{ header.toLocaleUpperCase() }}</h1>
             <!-- <h1>{{ header ? header : 'welcome' }}</h1> -->
             <!-- <input style="width:500px" type="text" v-model="header"> -->
+            <div class="header">
+                <h1>{{ header.toLocaleUpperCase() }}</h1>
+                <button v-if="state === 'default'" @click="changeState('edit')" class="btn btn-primary">Add</button>
+                <button v-else @click="changeState('default')" class="btn btn-cancel">Cancel</button>
+            </div>
+
             <div v-if="state === 'edit'" class="add-item-form">
                 <input  v-model="newItem" @keyup.enter="saveItem" style="width:500px" type="text" placeholder="Add an item">
                 <button class="btn btn-primary" @click="saveItem">Save Item</button>
@@ -50,6 +55,10 @@
                 methods:{
                     saveItem: function() {
                         this.items.push(this.newItem);
+                        this.newItem = '';
+                    },
+                    changeState: function(newState) {
+                        this.state = newState;
                         this.newItem = '';
                     }
                 }
