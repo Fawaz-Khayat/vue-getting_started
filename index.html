@@ -52,15 +52,18 @@
                     items: [
                         {
                             label: '10 party hats',
-                            purchased: false
+                            purchased: false,
+                            highPriority: false
                         },
                         {
                             label: '2 board games',
-                            purchased: true
+                            purchased: true,
+                            highPriority: false
                         },
                         {
                             label: '20 cups',
-                            purchased: false
+                            purchased: false,
+                            highPriority: true
                         }
                     ]
                 },
@@ -77,6 +80,9 @@
                     changeState: function(newState) {
                         this.state = newState;
                         this.newItem = '';
+                    },
+                    togglePurchased: function(item){
+                        item.purchased = !item.purchased;
                     }
                 }
             });
