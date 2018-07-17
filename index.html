@@ -21,8 +21,11 @@
             <h1>{{ header.toLocaleUpperCase() }}</h1>
             <!-- <h1>{{ header ? header : 'welcome' }}</h1> -->
             <!-- <input style="width:500px" type="text" v-model="header"> -->
-            <input v-model="newItem" @keyup.enter="saveItem" style="width:500px" type="text" placeholder="Add an item">
-            <button class="btn btn-primary" @click="saveItem">Save Item</button>
+            <div v-if="state === 'edit'" class="add-item-form">
+                <input  v-model="newItem" @keyup.enter="saveItem" style="width:500px" type="text" placeholder="Add an item">
+                <button class="btn btn-primary" @click="saveItem">Save Item</button>
+            </div>
+            
             <ul>
                 <li v-for="item in items">{{ item }}</li>
             </ul>
@@ -35,6 +38,7 @@
             let shoppingList = new Vue({
                 el:'#shopping-list',
                 data: {
+                    state: 'default',
                     header: 'Vue is ready to party',
                     newItem: '',
                     items: [
