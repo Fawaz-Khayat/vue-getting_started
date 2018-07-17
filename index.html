@@ -28,9 +28,11 @@
 
             <div v-if="state === 'edit'" class="add-item-form">
                 <input  v-model="newItem" @keyup.enter="saveItem" style="width:500px" type="text" placeholder="Add an item">
-                <button class="btn btn-primary" @click="saveItem">Save Item</button>
+                <button class="btn btn-primary" :disabled="newItem.length === 0" @click="saveItem">Save Item</button>
             </div>
-            <a v-bind:href="newItem" target="_blank">Dynamic Link</a>
+            <!-- example of binding attribute
+            <a :href="newItem" target="_blank">Dynamic Link</a>
+            -->
             <ul>
                 <li v-for="item in items">{{ item }}</li>
             </ul>
